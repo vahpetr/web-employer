@@ -1,0 +1,150 @@
+<form class="form-horizontal">
+    <fieldset>
+        <legend>
+            <span data-bind="ifnot: id">Создание</span>
+            <span data-bind="if: id">Редактирование</span> автомобиля
+            <button data-bind="click: cancel" type="button" class="close" aria-label="Close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </legend>
+        <div class="text-center" data-bind="visible: loading">
+            <div data-bind="component: 'spinner'"></div>
+        </div>
+        <div data-bind="visible: !loading()">
+            <div class="form-group" data-bind="validationElement: registrationPlate">
+                <label for="registrationPlate" class="col-sm-2 col-md-2 col-lg-3 control-label">Регистрационный номер</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <input class="form-control" id="registrationPlate" name="registrationPlate" type="text" data-bind="textInput: registrationPlate">
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: registrationPlate"></span>
+            </div>
+            <div class="form-group" data-bind="validationElement: manufactureYear">
+                <label for="manufactureYear" class="col-sm-2 col-md-2 col-lg-3 control-label">Год выпуска</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <div data-bind="component: { name: 'datetimepicker-binding', params: { date: manufactureYear, options: { format: 'YYYY' } } }"></div>
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: manufactureYear"></span>
+            </div>
+            <div class="form-group" data-bind="validationElement: color">
+                <label for="color" class="col-sm-2 col-md-2 col-lg-3 control-label">Цвет</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <select data-bind="options: colors,
+                       optionsText: 'name',
+                       value: color,
+                       optionsCaption: 'Выберите цвет',
+                       valueAllowUnset: true" name="color" class="bs3selectpicker form-control"></select>
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: color"></span>
+            </div>
+            <div class="form-group" data-bind="validationElement: body">
+                <label for="body" class="col-sm-2 col-md-2 col-lg-3 control-label">Кузов</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <select data-bind="options: bodies,
+                       optionsText: 'name',
+                       value: body,
+                       optionsCaption: 'Выберите кузов',
+                       valueAllowUnset: true" name="body" class="bs3selectpicker form-control"></select>
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: body"></span>
+            </div>
+            <div class="form-group" data-bind="validationElement: brand">
+                <label for="brand" class="col-sm-2 col-md-2 col-lg-3 control-label">Бренд</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <select data-bind="options: brands,
+                       optionsText: 'name',
+                       value: brand,
+                       optionsCaption: 'Выберите бренд',
+                       valueAllowUnset: true" name="brand" class="bs3selectpicker form-control"></select>
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: brand"></span>
+            </div>
+            <div class="form-group" data-bind="validationElement: model">
+                <label for="model" class="col-sm-2 col-md-2 col-lg-3 control-label">Модель</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <select data-bind="options: models,
+                       optionsText: 'fullName',
+                       value: model,
+                       optionsCaption: 'Выберите модель',
+                       valueAllowUnset: true,
+                       attr: {disabled: !brand()}" name="model" class="bs3selectpicker form-control"></select>
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: model"></span>
+            </div>
+            <div class="form-group" data-bind="validationElement: licenseNumber">
+                <label for="licenseNumber" class="col-sm-2 col-md-2 col-lg-3 control-label">Номер лицензии такси</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <input class="form-control" id="licenseNumber" name="licenseNumber" type="text" data-bind="textInput: licenseNumber">
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: licenseNumber"></span>
+            </div>
+            <div class="form-group" data-bind="validationElement: licenseOwner">
+                <label for="licenseOwner" class="col-sm-2 col-md-2 col-lg-3 control-label">Наименование владельца лицензии такси</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <input class="form-control" id="licenseOwner" name="licenseOwner" type="text" data-bind="textInput: licenseOwner">
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: licenseOwner"></span>
+            </div>
+            <div class="form-group" data-bind="validationElement: licenseIssued">
+                <label for="licenseIssued" class="col-sm-2 col-md-2 col-lg-3 control-label">Наименование органа, выдавшего лицензию такси</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <input class="form-control" id="licenseIssued" name="licenseIssued" type="text" data-bind="textInput: licenseIssued">
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: licenseIssued"></span>
+            </div>
+            <div class="form-group" data-bind="validationElement: licenseDate">
+                <label for="licenseDate" class="col-sm-2 col-md-2 col-lg-3 control-label">Дата выдачи лицензии такси</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <div data-bind="component: { name: 'datetimepicker-binding', params: { date: licenseDate } }"></div>
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: licenseDate"></span>
+            </div>
+            <div class="form-group" data-bind="validationElement: insurance">
+                <label for="insurance" class="col-sm-2 col-md-2 col-lg-3 control-label">Номер страхового полиса</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <input class="form-control" id="insurance" name="insurance" type="text" data-bind="textInput: insurance">
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: insurance"></span>
+            </div>
+            <div class="form-group" data-bind="validationElement: tariffPlan">
+                <label for="tariffPlan" class="col-sm-2 col-md-2 col-lg-3 control-label">Тарифный план</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <select data-bind="options: tariffPlans,
+                       optionsText: 'name',
+                       value: tariffPlan,
+                       optionsCaption: 'Выберите метод рассчета',
+                       valueAllowUnset: true" name="tariffPlan" class="bs3selectpicker form-control"></select>
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: tariffPlan"></span>
+            </div>
+            <div class="form-group" data-bind="validationElement: isEnabled">
+                <label for="isEnabled" class="col-sm-2 col-md-2 col-lg-3 control-label">Действующее</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <input class="form-control" id="isEnabled" name="isEnabled" type="checkbox" data-bind="checked: isEnabled">
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: isEnabled"></span>
+            </div>
+            <div class="form-group" data-bind="validationElement: selectedDrivers">
+                <label for="selectedDrivers" class="col-sm-2 col-md-2 col-lg-3 control-label">Водители</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <div data-bind="component: { 
+                            name: 'selectbox', 
+                            params: { 
+                                items: drivers, 
+                                selected: selectedDrivers, 
+                                getCaption: function(driver) { return driver.name } 
+                                } 
+                            }"></div>
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: selectedDrivers"></span>
+            </div>
+            <div class="pull-right">
+                <button data-bind="click: cancel" type="button" class="btn btn-default">
+                    <i class="fa fa-undo" aria-hidden="true"></i> Отменить
+                </button>
+                <button data-bind="click: save, enable: isValid" type="button" class="btn btn-primary">
+                    <i class="fa fa-cloud" aria-hidden="true"></i> Сохранить
+                </button>
+            </div>
+        </div>
+    </fieldset>
+</form>

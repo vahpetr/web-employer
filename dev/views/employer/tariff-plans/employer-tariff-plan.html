@@ -1,0 +1,105 @@
+<form class="form-horizontal">
+    <fieldset>
+        <legend>
+            <span data-bind="ifnot: id">Создание</span>
+            <span data-bind="if: id">Редактирование</span> тарифа
+            <button data-bind="click: cancel" type="button" class="close" aria-label="Close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </legend>
+        <div class="text-center" data-bind="visible: loading">
+            <div data-bind="component: 'spinner'"></div>
+        </div>
+        <div data-bind="visible: !loading()">
+            <div class="form-group" data-bind="validationElement: name">
+            <label for="name" class="col-sm-2 col-md-2 col-lg-3 control-label">Наименование</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <input class="form-control" id="name" name="name" type="text" data-bind="textInput: name">
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: name"></span>
+        </div>
+        <div class="form-group" data-bind="validationElement: description">
+            <label for="description" class="col-sm-2 col-md-2 col-lg-3 control-label">Описание</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <textarea class="form-control" id="description" name="description" type="text" data-bind="textInput: description" cols="30"
+                    rows="10"></textarea>
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: description"></span>
+        </div>
+        <div class="form-group" data-bind="validationElement: trafficJamVelocity">
+            <label for="trafficJamVelocity" class="col-sm-2 col-md-2 col-lg-3 control-label">Скорость движения в дорожной пробке</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <input class="form-control" id="trafficJamVelocity" name="trafficJamVelocity" type="number" data-bind="textInput: trafficJamVelocity">
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: trafficJamVelocity"></span>
+        </div>
+        <div class="form-group" data-bind="validationElement: method">
+            <label for="method" class="col-sm-2 col-md-2 col-lg-3 control-label">Метод рассчета</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <select data-bind="options: methods,
+                       optionsText: 'name',
+                       value: method,
+                       optionsCaption: 'Выберите метод рассчета',
+                       valueAllowUnset: true" name="method" class="bs3selectpicker form-control"></select>
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: method"></span>
+        </div>
+        <!--ko if: method-->
+        <!--ko if: method().name != 'ByKilometers'-->
+        <div class="form-group" data-bind="validationElement: pricePerMinute">
+            <label for="pricePerMinute" class="col-sm-2 col-md-2 col-lg-3 control-label">Стоимость минуты</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <input class="form-control" id="pricePerMinute" name="pricePerMinute" type="number" data-bind="textInput: pricePerMinute">
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: pricePerMinute"></span>
+        </div>
+        <!--/ko-->
+        <!--ko if: method().name != 'ByMinutes'-->
+        <div class="form-group" data-bind="validationElement: pricePerKilometer">
+            <label for="pricePerKilometer" class="col-sm-2 col-md-2 col-lg-3 control-label">Стоимость километра</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <input class="form-control" id="pricePerKilometer" name="pricePerKilometer" type="number" data-bind="textInput: pricePerKilometer">
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: pricePerKilometer"></span>
+        </div>
+        <!--/ko-->
+        <!--/ko-->
+        <div class="form-group" data-bind="validationElement: arrivalPrice">
+            <label for="arrivalPrice" class="col-sm-2 col-md-2 col-lg-3 control-label">Стоимость подачи</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <input class="form-control" id="arrivalPrice" name="arrivalPrice" type="number" data-bind="textInput: arrivalPrice">
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: arrivalPrice"></span>
+        </div>
+        <div class="form-group" data-bind="validationElement: includedMinutes">
+            <label for="includedMinutes" class="col-sm-2 col-md-2 col-lg-3 control-label">Минуты, включенные в стоимость подачи</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <input class="form-control" id="includedMinutes" name="includedMinutes" type="number" data-bind="textInput: includedMinutes">
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: includedMinutes"></span>
+        </div>
+        <div class="form-group" data-bind="validationElement: freeWaitingMinutes">
+            <label for="freeWaitingMinutes" class="col-sm-2 col-md-2 col-lg-3 control-label">Минуты бесплатного ожидания</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <input class="form-control" id="freeWaitingMinutes" name="freeWaitingMinutes" type="number" data-bind="textInput: freeWaitingMinutes">
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: freeWaitingMinutes"></span>
+        </div>
+        <div class="form-group" data-bind="validationElement: isEnabled">
+            <label for="isEnabled" class="col-sm-2 col-md-2 col-lg-3 control-label">Действующий</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <input class="form-control" id="isEnabled" name="isEnabled" type="checkbox" data-bind="checked: isEnabled">
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: isEnabled"></span>
+        </div>
+        <div class="pull-right">
+            <button data-bind="click: cancel" type="button" class="btn btn-default">
+                <i class="fa fa-undo" aria-hidden="true"></i> Отменить
+            </button>
+            <button data-bind="click: save, enable: isValid" type="button" class="btn btn-primary">
+                <i class="fa fa-cloud" aria-hidden="true"></i> Сохранить
+            </button>
+        </div>
+        </div>
+    </fieldset>
+</form>

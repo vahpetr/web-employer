@@ -1,0 +1,46 @@
+<div class="selectbox">
+    <ul class="nav nav-tabs nav-justified">
+        <li role="presentation" data-bind="css: { 'active': view() == 'selected' }, click: showSelected">
+            <a href="javascript:;">Выбранные</a>
+        </li>
+        <li role="presentation" data-bind="css: { 'active': view() == 'available' }, click: showAvailable">
+            <a href="javascript:;">Доступные</a>
+        </li>
+    </ul>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div data-bind="visible: view() == 'selected'">
+                <!--ko if:selected().length-->
+                <div class="list-group" data-bind="foreach: selected">
+                    <a href="javascript:;" class="list-group-item" data-bind="event: { dblclick: $parent.remove }">
+                        <span class="badge" data-bind="click: $parent.remove">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </span>
+                        <span data-bind="text: $parent.getCaption($data)"></span>
+                    </a>
+                </div>
+                <!--/ko-->
+                <p data-bind="visible: selected().length == 0">Список пуст</p>
+            </div>
+            <div data-bind="visible: view() == 'available'">
+                <input type="text" class="form-control" placeholder="Поиск" data-bind="textInput: search">
+                <i class="fa fa-times-circle-o searchclear" aria-hidden="true" data-bind="visible: search().length > 0, click: clearSearch"></i>
+                <!--ko if:filtred().length-->
+                <div class="list-group" data-bind="foreach: filtred">
+                    <a href="javascript:;" class="list-group-item" data-bind="event: { dblclick: $parent.add }">
+                        <span class="badge" data-bind="click: $parent.add">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </span>
+                        <span data-bind="text: $parent.getCaption($data)"></span>
+                    </a>
+                </div>
+                <!--/ko-->
+                <p data-bind="visible: filtred().length == 0 && available().length != 0">Совпадений нет</p>
+                <p data-bind="visible: filtred().length == 0 && available().length == 0">Список пуст</p>
+            </div>
+        </div>
+        <div class="panel-footer">
+            Выбранно: <span data-bind="text: selected().length"></span>, Доступно: <span data-bind="text: available().length"></span>
+        </div>
+    </div>
+</div>

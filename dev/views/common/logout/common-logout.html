@@ -1,0 +1,23 @@
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button data-bind="click: cancel" type="button" class="close" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <h4 class="modal-title">Выход</h4>
+            </div>
+            <div class="modal-body">
+                <p>Вы уверены что хотите выйти с аккаунта?</p>
+            </div>
+            <div class="modal-footer">
+                <button data-bind="click: cancel" type="button" class="btn btn-default">
+                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Отмена
+                </button>
+                <button data-bind="click: logout, enable: !loading()" type="button" class="btn btn-primary">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i> Выйти
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

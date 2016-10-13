@@ -1,0 +1,32 @@
+{
+  "name": "web-employer",
+  "version": "1.0.0",
+  "private": true,
+  "authors": [
+    "Vasilve Pyotr <vahpetr@gmail.com>"
+  ],
+  "homepage": "https://rapporttaxys.visualstudio.com/DefaultCollection/_git/WebEmployer",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "crossroads": "^0.12.2",
+    "hasher": "^1.2.0",
+    "requirejs": "^2.2.0",
+    "text": "requirejs-text#^2.0.15",
+    "knockout": "^3.4.0",
+    "jquery": "^2.2.3",
+    "components-font-awesome": "^4.5.0",
+    "domReady": "^2.0.1",
+    "js-signals": "^1.0.0",
+    "knockout-validation": "^2.0.3",
+    "moment": "^2.13.0",
+    "bootstrap-select": "^1.10.0",
+    "toastr": "^2.1.2",
+    "require-css": "^0.1.8",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.37",
+    "nprogress": "^0.2.0",
+    "es6-shim": "^0.35.1",
+    "es5-shim": "^4.5.9",
+    "json3": "^3.3.2",
+    "knockout-switch-case": "https://github.com/mbest/knockout-switch-case.git#^2.1.0"
+  }
+}

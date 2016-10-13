@@ -1,0 +1,30 @@
+<form class="form-horizontal">
+    <fieldset>
+        <legend>
+            Вход на аккаунт
+        </legend>
+        <div class="form-group" data-bind="validationElement: username">
+            <label for="username" class="col-sm-2 col-md-2 col-lg-3 control-label">Логин</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <input class="form-control" id="username" name="username" type="text" data-bind="textInput: username">
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: username"></span>
+        </div>
+        <div class="form-group" data-bind="validationElement: password">
+            <label for="password" class="col-sm-2 col-md-2 col-lg-3 control-label">Пароль</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <input class="form-control" id="password" name="password" type="password" data-bind="textInput: password">
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: password"></span>
+        </div>
+        <div class="pull-right">      
+            <button data-bind="click: enter, enable: isValid" type="button" class="btn btn-primary">
+                <i class="fa fa-sign-in" aria-hidden="true"></i> Войти
+            </button>
+        </div>
+    </fieldset>
+</form>
+
+<a class="btn btn-link" href="#registration">Регистрация</a>
+<a class="btn btn-link" href="#activation">Активация</a>
+<a class="btn btn-link" href="#recovery">Восстановление</a>

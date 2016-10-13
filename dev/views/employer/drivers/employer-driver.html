@@ -1,0 +1,240 @@
+<form class="form-horizontal">
+    <fieldset>
+        <legend>
+            <span data-bind="ifnot: id">Создание</span>
+            <span data-bind="if: id">Редактирование</span> водителя
+            <button data-bind="click: cancel" type="button" class="close" aria-label="Close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </legend>
+        <div class="text-center" data-bind="visible: loading">
+            <div data-bind="component: 'spinner'"></div>
+        </div>
+        <div data-bind="visible: !loading()">
+            <div class="form-group" data-bind="validationElement: name">
+                <label for="name" class="col-sm-2 col-md-2 col-lg-3 control-label">ФИО</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <input class="form-control" id="name" name="name" type="text" data-bind="textInput: name">
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: name"></span>
+            </div>
+            <!--<div class="form-group" data-bind="validationElement: surname">
+                    <label for="surname" class="col-sm-2 col-md-2 col-lg-3 control-label">Фамилия</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <input class="form-control" id="surname" name="surname" type="text" data-bind="textInput: surname">
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: surname"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: name">
+                    <label for="name" class="col-sm-2 col-md-2 col-lg-3 control-label">Имя</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <input class="form-control" id="name" name="name" type="text" data-bind="textInput: name">
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: name"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: patronymic">
+                    <label for="patronymic" class="col-sm-2 col-md-2 col-lg-3 control-label">Отчество</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <input class="form-control" id="patronymic" name="patronymic" type="text" data-bind="textInput: patronymic">
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: patronymic"></span>
+                </div>-->
+            <div class="form-group" data-bind="validationElement: phone">
+                <label for="phone" class="col-sm-2 col-md-2 col-lg-3 control-label">Телефон</label>
+                <div class="col-sm-7 col-md-6 col-lg-4">
+                    <input class="form-control" id="phone" name="phone" type="text" data-bind="textInput: phone">
+                </div>
+                <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: phone"></span>
+            </div>
+            <div data-bind="visible: showAll">
+                <div class="form-group" data-bind="validationElement: email">
+                    <label for="email" class="col-sm-2 col-md-2 col-lg-3 control-label">Почта</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <input class="form-control" id="email" name="email" type="text" data-bind="textInput: email">
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: email"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: birthDate">
+                    <label for="birthDate" class="col-sm-2 col-md-2 col-lg-3 control-label">Дата рождения</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <div data-bind="component: { name: 'datetimepicker-binding', params: { date: birthDate } }"></div>
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: birthDate"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: passport">
+                    <label for="passport" class="col-sm-2 col-md-2 col-lg-3 control-label">Серия и номер паспорта</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <input class="form-control" id="passport" name="passport" type="text" data-bind="textInput: passport">
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: passport"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: country">
+                    <label for="country" class="col-sm-2 col-md-2 col-lg-3 control-label">Страна</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <select data-bind="options: countries, optionsText: 'fullName', value: country, optionsCaption:
+                    'Выберите страну', valueAllowUnset: true" name="country" class="bs3selectpicker form-control"></select>
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: country"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: region">
+                    <label for="region" class="col-sm-2 col-md-2 col-lg-3 control-label">Регион</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <select data-bind="options: regions, optionsText: 'name', value: region, optionsCaption:
+                    'Выберите регион', valueAllowUnset: true" name="region" class="bs3selectpicker form-control"></select>
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: region"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: city">
+                    <label for="city" class="col-sm-2 col-md-2 col-lg-3 control-label">Город</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <select data-bind="options: cities, optionsText: 'name', value: city, optionsCaption:
+                    'Выберите город', valueAllowUnset: true" name="city" class="bs3selectpicker form-control"></select>
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: city"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: currentCity">
+                    <label for="currentCity" class="col-sm-2 col-md-2 col-lg-3 control-label">Город проживания</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <select data-bind="options: currentCities, optionsText: 'name', value: currentCity, optionsCaption:
+                    'Выберите город проживания', valueAllowUnset: true" name="currentCity" class="bs3selectpicker form-control"></select>
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: currentCity"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: citizenship">
+                    <label for="citizenship" class="col-sm-2 col-md-2 col-lg-3 control-label">Гражданство</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <select data-bind="options: countries, optionsText: 'fullName', value: citizenship, optionsCaption:
+                    'Выберите гражданство', valueAllowUnset: true" name="citizenship" class="bs3selectpicker form-control"></select>
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: citizenship"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: locality">
+                    <label for="locality" class="col-sm-2 col-md-2 col-lg-3 control-label">Населённый пункт</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <input class="form-control" id="locality" name="locality" type="text" data-bind="textInput: locality">
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: locality"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: street">
+                    <label for="street" class="col-sm-2 col-md-2 col-lg-3 control-label">Улица</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <input class="form-control" id="street" name="street" type="text" data-bind="textInput: street">
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: street"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: home">
+                    <label for="home" class="col-sm-2 col-md-2 col-lg-3 control-label">Дом</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <input class="form-control" id="home" name="home" type="text" data-bind="textInput: home">
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: home"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: building">
+                    <label for="building" class="col-sm-2 col-md-2 col-lg-3 control-label">Строение</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <input class="form-control" id="building" name="building" type="text" data-bind="textInput: building">
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: building"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: room">
+                    <label for="room" class="col-sm-2 col-md-2 col-lg-3 control-label">Квартира</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <input class="form-control" id="room" name="room" type="text" data-bind="textInput: room">
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: room"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: phone2">
+                    <label for="phone2" class="col-sm-2 col-md-2 col-lg-3 control-label">Дополнительный телефон</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <input class="form-control" id="phone2" name="phone2" type="text" data-bind="textInput: phone2">
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: phone2"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: inn">
+                    <label for="inn" class="col-sm-2 col-md-2 col-lg-3 control-label">ИНН</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <input class="form-control" id="inn" name="inn" type="text" data-bind="textInput: inn">
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: inn"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: driverExperienceDate">
+                    <label for="driverExperienceDate" class="col-sm-2 col-md-2 col-lg-3 control-label">Общий водительский стаж</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <div data-bind="component: { name: 'datetimepicker-binding', params: { date: driverExperienceDate, options: { format: 'YYYY' } } }"></div>
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: driverExperienceDate"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: driverLicenseDate">
+                    <label for="driverLicenseDate" class="col-sm-2 col-md-2 col-lg-3 control-label">Год получени ВУ</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <div data-bind="component: { name: 'datetimepicker-binding', params: { date: driverLicenseDate } }"></div>
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: driverLicenseDate"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: workBeginDate">
+                    <label for="workBeginDate" class="col-sm-2 col-md-2 col-lg-3 control-label">Начало работы в такси</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <div data-bind="component: { name: 'datetimepicker-binding', params: { date: workBeginDate } }"></div>
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: workBeginDate"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: gender">
+                    <label for="gender" class="col-sm-2 col-md-2 col-lg-3 control-label">Пол</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <div class="radio">
+                            <label>
+                          <input type="radio" name="gender" value="1" data-bind="checked: gender">
+                            Мужской
+                        </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                          <input type="radio" name="gender" value="0" data-bind="checked: gender">
+                            Женский
+                        </label>
+                        </div>
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: gender"></span>
+                </div>
+                <div class="form-group" data-bind="validationElement: selectedCars">
+                    <label for="selectedCars" class="col-sm-2 col-md-2 col-lg-3 control-label">Машины</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <div data-bind="component: { 
+                            name: 'selectbox', 
+                            params: { 
+                                items: cars, 
+                                selected: selectedCars, 
+                                getCaption: function(car) { return car.vehicleModel.fullName + ', ' + car.registrationPlate } 
+                                } 
+                            }"></div>
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: selectedCars"></span>
+                </div>
+                <!--<div class="form-group" data-bind="validationElement: role">
+                    <label for="role" class="col-sm-2 col-md-2 col-lg-3 control-label">Роль</label>
+                    <div class="col-sm-7 col-md-6 col-lg-4">
+                        <select data-bind="options: roles, optionsText: 'name', value: role, optionsCaption:
+                    'Выберите роль', valueAllowUnset: true" name="role" class="bs3selectpicker form-control"></select>
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: role"></span>
+                </div>-->
+            </div>
+            <div data-bind="ifnot:id" class="pull-left">
+                <!--ko ifnot: showAll-->
+                <button data-bind="click: showAll.on" type="button" class="btn btn-default">Показать всё</button>
+                <!--/ko-->
+                <!--ko if: showAll-->
+                <button data-bind="click: showAll.off" type="button" class="btn btn-default">Сокращённый вид</button>
+                <!--/ko-->
+            </div>
+            <div class="pull-right">
+                <button data-bind="click: cancel" type="button" class="btn btn-default">
+                    <i class="fa fa-undo" aria-hidden="true"></i> Отменить
+                </button>
+                <button data-bind="click: save, enable: isValid" type="button" class="btn btn-primary">
+                    <i class="fa fa-cloud" aria-hidden="true"></i> Сохранить
+                </button>
+            </div>
+        </div>
+    </fieldset>
+</form>

@@ -1,0 +1,35 @@
+<script id="fields-tmpl" type="text/html">
+    <div class="form-group" data-bind="validationElement: name">
+            <label for="name" class="col-sm-2 col-md-2 col-lg-3 control-label" title="Наименование организации">Наименование орг.</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <input class="form-control" id="name" name="name" type="text" data-bind="textInput: name">
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: name"></span>
+        </div>
+</script>
+<form class="form-horizontal" data-bind="if: view != 'fieldsOnly'">
+    <fieldset>
+        <legend>
+            Профиль
+        </legend>
+        <div class="text-center" data-bind="visible: loading">
+            <div data-bind="component: 'spinner'"></div>
+        </div>
+        <!--ko ifnot: loading-->
+        <!--ko template: { name: 'fields-tmpl', data: $data }-->
+        <!--/ko-->
+        <div class="pull-right">
+            <button data-bind="click: cancel" type="button" class="btn btn-default">
+                <i class="fa fa-undo" aria-hidden="true"></i> Отменить
+            </button>
+            <button data-bind="click: save, enable: isValid" type="button" class="btn btn-primary">
+                <i class="fa fa-cloud" aria-hidden="true"></i> Сохранить
+            </button>
+        </div>
+        <!--/ko-->
+    </fieldset>
+</form>
+<!--ko if: view == 'fieldsOnly'-->
+<!--ko template: { name: 'fields-tmpl', data: $data }-->
+<!--/ko-->
+<!--/ko-->

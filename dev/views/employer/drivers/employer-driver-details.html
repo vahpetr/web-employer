@@ -1,0 +1,145 @@
+<form class="form-horizontal details">
+    <fieldset>
+        <legend>
+            Карточка водителя
+            <button data-bind="click: cancel" type="button" class="close" aria-label="Close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </legend>
+        <div class="text-center" data-bind="visible: loading">
+            <div data-bind="component: 'spinner'"></div>
+        </div>
+        <div data-bind="visible: !loading()">
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <img class="img-thumbnail" src="images/face.png" alt="Image" style="width: 200%">
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">ФИО</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: name"></span>
+                </div>
+                <!--<div class="form-group">
+                    <label class="col-sm-2 col-md-2 col-lg-3 control-label">Фамилия</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: surname"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 col-md-2 col-lg-3 control-label">Имя</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: name"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 col-md-2 col-lg-3 control-label">Отчество</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: patronymic"></span>
+                </div>-->
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Телефон</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: phone"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Почта</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: email"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Дата рождения</label>
+                    <div class="col-sm-9 col-md-9 col-lg-9" data-bind="component: { name: 'date-binding', params: { date: birthDate } }"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Серия и номер паспорта</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: passport"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Страна</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: country.safe('fullName')"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Регион</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: region.safe('name')"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Город</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: city.safe('name')"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Город проживания</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: currentCity.safe('name')"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Гражданство</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: citizenship.safe('fullName')"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Населённый пункт</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: locality"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Улица</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: street"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Дом</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: home"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Строение</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: building"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Квартира</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: room"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Дополнительный телефон</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: phone2"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">ИНН</label>
+                    <span class="col-sm-9 col-md-9 col-lg-9" data-bind="detail: inn"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Общий водительский стаж</label>
+                    <div class="col-sm-9 col-md-9 col-lg-9" data-bind="component: { name: 'date-binding', params: { date: driverExperienceDate } }"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Год получени ВУ</label>
+                    <div class="col-sm-9 col-md-9 col-lg-9" data-bind="component: { name: 'date-binding', params: { date: driverLicenseDate } }"></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Начало работы в такси</label>
+                    <div class="col-sm-9 col-md-9 col-lg-9" data-bind="component: { name: 'date-binding', params: { date: workBeginDate } }"></div>
+                </div>
+                <div class="form-group" data-bind="validationElement: gender">
+                    <label for="gender" class="col-sm-3 col-md-3 col-lg-3 control-label">Пол</label>
+                    <div class="col-sm-9 col-md-9 col-lg-9">
+                        <div data-bind="switch: gender">
+                            <div data-bind="case: 0">
+                                Женский
+                            </div>
+                            <div data-bind="case: 1">
+                                Мужской
+                            </div>
+                            <div data-bind="case: $default">
+                                -
+                            </div>
+                        </div>
+                    </div>
+                    <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: gender"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 col-md-3 col-lg-3 control-label">Машины</label>
+                    <div class="col-sm-9 col-md-9 col-lg-9">
+                        <ul class="list-group" data-bind="foreach: selectedCars">
+                            <li class="list-group-item" data-bind="text: vehicleModel.fullName + ', ' + registrationPlate"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-primary" role="button" data-bind="navigator: { item: $data, action: 'edit'}">
+                    <i class="fa fa-pencil-square" aria-hidden="true"></i> Редактировать
+                </a>
+                <button data-bind="click: cancel" type="button" class="btn btn-default">
+                    <i class="fa fa-times-circle" aria-hidden="true"></i> Закрыть
+                </button>
+            </div>
+        </div>
+    </fieldset>
+</form>

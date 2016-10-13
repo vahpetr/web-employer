@@ -1,0 +1,6 @@
+dev/bower_components
+dev/typescripts/dist
+node_modules
+release
+tsd
+typings

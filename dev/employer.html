@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Васильев Пётр" />
+    <meta name="copyright" lang="ru" content="ZT" />
+    <link type="text/plain" rel="author" href="humans.txt" />
+    <title>Страница работодателя</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="scripts/require.config.js"></script>
+    <script data-main="scripts/employer/startup" src="bower_components/requirejs/require.js"></script>
+    <script>
+        var root = 'http://dev.inbest.pro/';
+    </script>
+</head>
+
+<body>
+    
+    <script id="navbar-nav-item-tmpl" type="text/html">
+        <li data-bind="css: { active: $root.router.section().route.href == href }">
+            <a data-bind="attr: { href: '#' + href }">
+                <span class="fa-stack fa-3x hidden-xs">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i data-bind="css: 'fa fa-stack-1x fa-inverse fa-' + icon"></i>
+                </span>
+                <div data-bind="text: caption"></div>
+            </a>
+        </li>
+    </script>
+    
+    <script type="text/html" id="authorized-link-tmpl">
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav" data-bind="template:{ name: 'navbar-nav-item-tmpl', foreach: router.sections }"></ul>
+            <ul class="nav navbar-nav navbar-right">
+                <!--<li>
+                    <a href="#invite" title= "Пригласить водителя" data-bind="css: { active: router.section().route.href == 'invite' }">
+                        <span class="fa-stack fa-2x">
+                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </li>-->
+                <li>
+                    <a href="#profile" title= "Профиль" data-bind="css: { active: router.section().route.href == 'profile' }">
+                        <span class="fa-stack fa-2x">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#settings" title= "Настройки" data-bind="css: { active: router.section().route.href == 'settings' }">
+                        <span class="fa-stack fa-2x">
+                            <i class="fa fa-gears" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#logout" title= "Выйти" data-bind="css: { active: router.section().route.href == 'logout' }">
+                        <span class="fa-stack fa-2x">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </script>
+    
+    <script type="text/html" id="unauthorized-link-tmpl">
+        <ul class="nav navbar-nav">
+            <li class="active">
+                <a href="#login">
+                    <span class="fa-stack fa-3x hidden-xs">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-stack-1x fa-inverse fa-sign-in"></i>
+                    </span>
+                    <div>Вход</div>       
+                </a>
+            </li>
+        </ul>     
+    </script>
+    
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+                <a class="navbar-brand" href="/"><img src="images/employer/logo.png" alt=""></a>
+            </div>
+            <!--ko if:authorization.isAuthorized-->
+            <div data-bind="template: { name: 'authorized-link-tmpl', data: $data }"></div>
+            <!--/ko-->
+            <!--ko ifnot:authorization.isAuthorized-->
+            <div data-bind="template: { name: 'unauthorized-link-tmpl', data: $data }"></div>  
+            <!--/ko-->            
+        </div>
+    </div>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div data-bind="with: router.section">
+                    <div data-bind="component: { name: route.name, params: params }"></div>
+                </div>
+            </div>   
+        </div>
+        
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">ZT</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<form class="form-horizontal">
+    <fieldset>
+        <legend>
+            Регистрация аккаунта
+        </legend>
+        <div class="form-group" data-bind="validationElement: login">
+            <label for="login" class="col-sm-2 col-md-2 col-lg-3 control-label">Почта</label>
+            <div class="col-sm-7 col-md-6 col-lg-4">
+                <input class="form-control" id="login" name="login" type="text" data-bind="textInput: login">
+            </div>
+            <span class="col-sm-3 col-md-4 col-lg-5 help-block" data-bind="validationMessage: login"></span>
+        </div>
+        <div data-bind="component: { 
+            name: 'employer-account', 
+            params: { view: 'fieldsOnly'}
+        }"></div>
+        <div class="pull-right">      
+            <button data-bind="click: registration, enable: isValid" type="button" class="btn btn-primary">Зарегистрироваться</button>
+        </div>
+    </fieldset>
+</form>
+
+<a class="btn btn-link" href="#activation">Активация</a>
+<a class="btn btn-link" href="#login">Вход</a>
+<a class="btn btn-link" href="#recovery">Восстановление</a>

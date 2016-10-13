@@ -1,0 +1,22 @@
+{
+    "version": "0.1.0",
+    "command": "node_modules/.bin/gulp",
+    "isShellCommand": true,
+    "args": [
+        "--no-color"
+    ],
+    "tasks": [
+        {
+            "taskName": "default",
+            "args": [],
+            "isBuildCommand": true,
+            "isWatching": false,
+            "problemMatcher": [
+                "$lessCompile",
+                "$tsc",
+                "$jshint",
+                "$jshint-stylish"
+            ]
+        }
+    ]
+}

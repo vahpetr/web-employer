@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist/",
+        "sourceMap": true,
+		"target": "es3",
+		"module": "amd"
+	},
+	"filesGlob": [
+		"./typings/index.d.ts",
+        "./dev/typescripts/definitions/**/*.d.ts",
+        "./dev/typescripts/src/static/**/*.ts"
+    ],
+	"exclude": [
+		"node_modules",
+		"dev/bower_components",
+		"jspm_packages",
+		"tmp",
+		"temp"
+	]
+}
